@@ -13,6 +13,7 @@ const (
 	Authority             = "authority"
 	DaemonSet             = "daemonset"
 	Deployment            = "deployment"
+	Job                   = "job"
 	Namespace             = "namespace"
 	Pod                   = "pod"
 	ReplicationController = "replicationcontroller"
@@ -27,6 +28,7 @@ var AllResources = []string{
 	Authority,
 	DaemonSet,
 	Deployment,
+	Job,
 	Namespace,
 	Pod,
 	ReplicationController,
@@ -98,6 +100,8 @@ func CanonicalResourceNameFromFriendlyName(friendlyName string) (string, error) 
 		return Deployment, nil
 	case "ds", "daemonset", "daemonsets":
 		return DaemonSet, nil
+	case "job", "jobs":
+		return Job, nil
 	case "ns", "namespace", "namespaces":
 		return Namespace, nil
 	case "po", "pod", "pods":

@@ -281,6 +281,10 @@ func validateFromResourceType(resourceType string) (string, error) {
 // It's the same as BuildResources but only admits one arg and only returns one resource
 func BuildResource(namespace, arg string) (pb.Resource, error) {
 	res, err := BuildResources(namespace, []string{arg})
+	if err != nil {
+		return pb.Resource{}, err
+	}
+
 	return res[0], err
 }
 
